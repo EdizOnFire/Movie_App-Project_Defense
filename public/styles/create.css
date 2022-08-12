@@ -11,10 +11,6 @@ fieldset,
   box-shadow: 0px 0px 1.5px 3px rgb(0, 15, 153);
 }
 
-button {
-  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
-}
-
 
 fieldset div,
 #editItem {
@@ -39,7 +35,7 @@ input[type=text],
 input[type=number],
 textarea {
   font-family: 'Courier New', Courier, monospace;
-  font-size: 1.2em;
+  font-size: 20px;
   line-height: 1;
   padding: 0.3em 0.4em;
   margin: 0 0.5em 1em 0;
@@ -85,7 +81,7 @@ textarea {
   background-color: #0c44bd;
   color: white;
   font-family: 'Courier New', Courier, monospace;
-  font-size: 15px;
+  font-size: 20px;
   margin-bottom: 5px;
   margin-top: 20px;
 }
@@ -93,7 +89,7 @@ textarea {
 .createPage,
 .editPage {
   font-family: 'Courier New', Courier, monospace;
-  font-size: 16px;
+  font-size: 20px;
   color: #aab2bd;
   padding: 1em 0 10em;
   width: 800px;
