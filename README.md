@@ -14,6 +14,12 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 The page will reload when you make changes.\
 You may also see any lint errors in the console.
 
+### `node server.js`
+
+Runs the server that is required for the authentication, authorisation, and creating items.
+
+Make sure first to access the server folder.
+
 ### `npm test`
 
 Launches the test runner in the interactive watch mode.\
