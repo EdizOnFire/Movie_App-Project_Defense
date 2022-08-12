@@ -16,9 +16,14 @@ You may also see any lint errors in the console.
 
 ### `node server.js`
 
-Runs the server that is required for the authentication, authorisation, and creating items.
+Runs the server that which is required in order to login, register, and create items.
 
 Make sure first to access the server folder.
+
+If you wish you can login with the following details:
+
+email: ediz@abv.bg
+password: 123456
 
 ### `npm test`
 
