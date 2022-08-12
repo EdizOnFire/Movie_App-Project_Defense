@@ -16,7 +16,7 @@ You may also see any lint errors in the console.
 
 ### `node server.js`
 
-Runs the server that which is required in order to login, register, and create items.
+Runs the server which allows you to login, register, and create items.
 
 Make sure first to access the server folder.
 
