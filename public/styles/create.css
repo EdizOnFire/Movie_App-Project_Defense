@@ -1,16 +1,23 @@
-fieldset, #editItem {
+fieldset,
+#editItem {
   margin: 1em auto;
   padding: 2em;
   width: 25em;
-  border-radius: 2px;
-  border-color: #5f5f5f;
+  border-color: #045ecc;
   background: #000000;
-  box-shadow: 0 2px 2px #000000;
   font-family: 'Courier New', Courier, monospace;
   color: white;
+  border-radius: 7px 7px 7px 7px;
+  box-shadow: 0px 0px 1.5px 3px rgb(0, 15, 153);
 }
 
-fieldset div, #editItem {
+button {
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+}
+
+
+fieldset div,
+#editItem {
   font-family: 'Courier New', Courier, monospace;
   color: white;
 }
@@ -31,6 +38,7 @@ textarea {
 input[type=text],
 input[type=number],
 textarea {
+  font-family: 'Courier New', Courier, monospace;
   font-size: 1.2em;
   line-height: 1;
   padding: 0.3em 0.4em;
@@ -40,22 +48,22 @@ textarea {
 input[type=text]::-webkit-input-placeholder,
 input[type=number]::-webkit-input-placeholder,
 textarea::-webkit-input-placeholder {
-  color: #343b44;
+  border-color: #045ecc;
+  font-family: 'Courier New', Courier, monospace;
   line-height: 1.2;
   -webkit-transition: all 0.2s ease;
   transition: all 0.2s ease;
 }
 
-input[type=text]:hover,
-textarea {
+input[type="text"]:hover {
   border-color: #045ecc;
 }
 
-input[type=text]:focus,
+input[type="text"]:focus,
 input[type=number]:focus,
 textarea:focus {
   outline: none;
-  border-color: #39a086;
+  border-color: #045ecc;
 }
 
 textarea {

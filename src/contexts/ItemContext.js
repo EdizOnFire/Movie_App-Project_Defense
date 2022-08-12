@@ -14,6 +14,8 @@ const itemReducer = (state, action) => {
         case 'FETCH_ITEM_DETAILS':
         case 'EDIT_ITEM':
             return state.map(x => x._id === action.itemId ? action.payload : x);
+        case 'ADD_COMMENT':
+            return state.map(x => x._id === action.itemId ? { ...x, comments: [...x.comments, action.payload] } : x);
         case 'REMOVE_ITEM':
             return state.filter(x => x._id !== action.itemId);
         default:
@@ -50,6 +52,13 @@ export const ItemProvider = ({
             itemId,
         })
     }
+    const addComment = (itemId, comment) => {
+        dispatch({
+            type: 'ADD_COMMENT',
+            payload: comment,
+            itemId
+        });
+    };
 
     const itemAdd = (itemData) => {
         dispatch({
@@ -79,6 +88,7 @@ export const ItemProvider = ({
             items,
             itemAdd,
             itemEdit,
+            addComment,
             fetchItemDetails,
             selectItem,
             itemRemove

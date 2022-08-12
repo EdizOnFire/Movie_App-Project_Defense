@@ -1364,6 +1364,9 @@
                 "description": "While on a journey of physical and spiritual healing, a brilliant neurosurgeon is drawn into the world of the mystic arts.",
                 "_createdOn": 1617194295474,
             }
+        },
+        comments: {
+        
         }
     };
     var rules$1 = {

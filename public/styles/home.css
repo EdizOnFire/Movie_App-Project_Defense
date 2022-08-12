@@ -3,8 +3,7 @@ body {
     background-color: #0B0C10;
 }
 
-nav,
-footer {
+nav {
     font-family: 'Courier New', Courier, monospace;
     background-color: #000000;
     width: 100%;
@@ -41,13 +40,21 @@ nav a {
 }
 
 footer {
+    font-family: 'Courier New', Courier, monospace;
+    background-color: #000000;
+    width: 100%;
+    display: flex;
+    font-size: 15px;
+    align-items: center;
+    margin-top: 0;
+    margin: 0%;
+    color: white;
     position: fixed;
     width: 100%;
     left: 0;
     bottom: 0;
     padding: 15px;
     text-align: center;
-    color: #ffffff;
     font-weight: bold;
 }
 
@@ -57,14 +64,32 @@ nav a:hover {
     font-weight: bolder;
 }
 
-#welcomePage {
+.welcome-message {
+    text-decoration: none;
+    margin-left: 20px;
+    margin-right: auto;
+    font-size: large;
+    border-radius: 7px 7px 7px 7px;
+    box-shadow: 0px 0px 1.5px 3px rgb(2, 22, 199);
+    text-align: center;
+    font-family: 'Courier New', Courier, monospace;
+    background-color: #000000;
     color: #0167ff;
-    font-size: 24px;
-    padding: 30px;
-    margin: 10px;
+    width: 600px;
+    height: auto;
 }
 
+.welcome-message h1 {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
 
+.welcome-message p {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
 
 #welcomePage img {
     display: block;
@@ -84,11 +109,13 @@ nav>img {
 
 
 .welcome-message {
+    text-decoration: none;
     margin-left: 32%;
 }
 
 .catalog {
     margin-left: 45%;
+    text-decoration: none;
 }
 
 html {

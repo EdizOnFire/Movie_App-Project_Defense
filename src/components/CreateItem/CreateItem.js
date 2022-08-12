@@ -77,6 +77,7 @@ const CreateItem = () => {
                             </label>
                             <textarea
                                 name="description"
+                                type="text"
                                 className="description"
                                 placeholder="Description"
                                 defaultValue={""}
