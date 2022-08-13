@@ -7,9 +7,9 @@ const Home = () => {
         <section id="welcomePage">
             <div className="welcome-message">
                 <h1>Welcome to Your Movie Website!</h1>
-                <p>Feel free to browse our <Link to="/catalog">catalog</Link> of movies.</p>
-                <p>Login by clicking on <Link to="/login">this link</Link>.</p>
-                <p>If you don't have a registration, please follow <Link to="/register">this link</Link>.</p>
+                <p>Feel free to browse our <Link to="/catalog">catalog</Link> of movies and to upload your own.</p>
+                <p>If you have an account, click on "Login" on the nav bar.</p>
+                <p>If you don't have an account, click on "Register" on the nav bar.</p>
             </div>
         </section>
     );
