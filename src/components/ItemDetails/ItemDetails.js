@@ -13,7 +13,6 @@ const ItemDetails = () => {
     const { itemId } = useParams();
 
     const currentItem = selectItem(itemId);
-console.log(currentItem);
     const isOwner = currentItem._ownerId === user._id;
 
     useEffect(() => {
@@ -82,15 +81,15 @@ console.log(currentItem);
                 <h2>Comments:</h2>
                 <div>
                     {currentItem.comments?.map(x =>
-                        <p key={x} className="comment">
+                        <div key={x} className="comment">
                             <p>{x}</p>
-                        </p>
+                        </div>
                     )}
+                    {!currentItem.comments &&
+                        <p className="no-comment">No comments.</p>
+                    }
                 </div>
 
-                {currentItem.comments.length === 0 &&
-                    <p className="no-comment">No comments.</p>
-                }
                 {user.email
                     ? <article className="create-comment">
                         <form className="form" onSubmit={addCommentHandler}>
