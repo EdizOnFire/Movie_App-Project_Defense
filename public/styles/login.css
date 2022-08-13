@@ -8,40 +8,31 @@ fieldset div {
   background: #000000;
 }
 
-
-
-input, input + label > i {
-  border-radius: 3px;
-  box-shadow: none;
-  border: 1px solid #384049;
-  background: #15171b;
-  display: block;
-  width: 100%;
-  color: white;
-  transition: all 0.3s ease;
-}
-
-input[type=text], input[type=password] {
+input[type=text],
+input[type=password] {
   font-size: 1.2em;
   line-height: 1;
   padding: 0.3em 0.4em;
   margin: 0 0.5em 1em 0;
 }
 
-input[type=text]::-webkit-input-placeholder, input[type=password]::-webkit-input-placeholder {
+input[type=text]::-webkit-input-placeholder,
+input[type=password]::-webkit-input-placeholder {
   color: #343b44;
   line-height: 1.2;
   -webkit-transition: all 0.2s ease;
   transition: all 0.2s ease;
 }
 
-input[type=text]:hover, input[type=password]:hover {
-  border-color: #4e5966;
+input[type=text]:hover,
+input[type=password]:hover {
+  border-color: #0050b1;
 }
 
-input[type=text]:focus, input[type=password]:focus {
+input[type=text]:focus,
+input[type=password]:focus {
   outline: none;
-  border-color: #39a086;
+  border-color: #0043fa;
 }
 
 .login,
