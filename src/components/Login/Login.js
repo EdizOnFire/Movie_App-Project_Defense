@@ -11,18 +11,16 @@ const Login = () => {
     const onSubmit = (e) => {
         e.preventDefault();
 
-        const {
-            email,
-            password,
-        } = Object.fromEntries(new FormData(e.target));
+        const { email, password } = Object.fromEntries(new FormData(e.target));
 
-        authService.login(email, password)
-            .then(authData => {
+        authService
+            .login(email, password)
+            .then((authData) => {
                 userLogin(authData);
-                navigate('/');
+                navigate("/");
             })
             .catch(() => {
-                navigate('/404');
+                navigate("/404");
             });
     };
 
@@ -58,12 +56,14 @@ const Login = () => {
                     </>
 
                     <p className="field">
-                        <span>If you don't have profile click <Link to="/register">here</Link></span>
+                        <span>
+                            If you don't have profile click <Link to="/register">here</Link>
+                        </span>
                     </p>
                 </fieldset>
             </form>
         </section>
     );
-}
+};
 
 export default Login;

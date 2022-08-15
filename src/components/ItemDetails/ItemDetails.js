@@ -36,7 +36,6 @@ const ItemDetails = () => {
             });
     };
 
-
     const itemDeleteHandler = () => {
         const confirmation = window.confirm('Are you sure you want to delete this item?');
 
