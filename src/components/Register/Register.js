@@ -17,7 +17,11 @@ const Register = ({ auth }) => {
         const confirmPassword = formData.get('confirm-password');
 
         if (password !== confirmPassword) {
-            return;
+            alert("Passwords don't match.")
+            return
+        } else if (email == '' || password == '') {
+            alert("Don't leave empty fields.")
+            return
         }
 
         authService.register(email, password)
