@@ -13,15 +13,25 @@ const Login = () => {
 
         const { email, password } = Object.fromEntries(new FormData(e.target));
 
-        authService
-            .login(email, password)
-            .then((authData) => {
-                userLogin(authData);
-                navigate("/");
-            })
-            .catch(() => {
-                navigate("/404");
-            });
+        if (email !== '' || password !== '') {
+            authService
+                .login(email, password)
+                .then((authData) => {
+                    if (authData.code !== 403) {
+                        userLogin(authData);
+                        navigate("/");
+                    } else {
+                        alert("Email and password don't match.")
+                        return;
+                    }
+                })
+                .catch((error) => {
+                    console.error(error);
+                });
+        } else {
+            alert("Don't leave an empty field.")
+            return;
+        }
     };
 
     return (
