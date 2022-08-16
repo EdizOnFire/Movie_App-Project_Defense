@@ -1,47 +1,19 @@
-import { useEffect, useContext } from "react";
+import { useContext } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
 import { ItemContext } from "../../contexts/ItemContext";
 import { useAuthContext } from "../../contexts/AuthContext";
 
 import * as itemService from "../../services/itemService";
-import * as commentService from "../../services/commentService";
+import ItemComments from "./ItemComments/ItemComments";
 
 const ItemDetails = () => {
     const navigate = useNavigate();
-    const { addComment, fetchItemDetails, selectItem, itemRemove } =
-        useContext(ItemContext);
+    const { selectItem, itemRemove } = useContext(ItemContext);
     const { user } = useAuthContext();
     const { itemId } = useParams();
 
     const currentItem = selectItem(itemId);
     const isOwner = currentItem._ownerId === user._id;
-
-    useEffect(() => {
-        (async () => {
-            const itemDetails = await itemService.getOne(itemId);
-            const itemComments = await commentService.getByItemId(itemId);
-
-            fetchItemDetails(itemId, {
-                ...itemDetails,
-                comments: itemComments.map((x) => `${x.user.email}: ${x.text}`),
-            });
-        })();
-    }, []);
-
-    const addCommentHandler = (e) => {
-        e.preventDefault();
-        const formData = new FormData(e.target);
-
-        const comment = formData.get("comment");
-        if (comment === "") {
-            alert("You can't submit an empty field.");
-            return;
-        }
-
-        commentService.create(itemId, comment).then((result) => {
-            addComment(itemId, comment);
-        });
-    };
 
     const itemDeleteHandler = () => {
         const confirmation = window.confirm(
@@ -89,37 +61,7 @@ const ItemDetails = () => {
                 )}
             </div>
 
-            <div className="comments">
-                <h2>Comments:</h2>
-                <div>
-                    {currentItem.comments.length !== 0 ? (
-                        currentItem.comments.map((x) => (
-                            <div key={Math.random(10000)} className="comment">
-                                <p>{x}</p>
-                            </div>
-                        ))
-                    ) : (
-                        <p className="no-comment">No comments.</p>
-                    )}
-                </div>
-
-                {user.email ? (
-                    <article className="create-comment">
-                        <form className="form" onSubmit={addCommentHandler}>
-                            <textarea name="comment" placeholder="Comment......" />
-                            <div className="actionBtn">
-                                <input
-                                    className="btn-group"
-                                    type="submit"
-                                    value="Add Comment"
-                                />
-                            </div>
-                        </form>
-                    </article>
-                ) : (
-                    <></>
-                )}
-            </div>
+            <ItemComments></ItemComments>
         </section>
     );
 };
