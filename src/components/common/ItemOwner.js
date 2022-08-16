@@ -5,17 +5,17 @@ import { useAuthContext } from "../../contexts/AuthContext";
 import { ItemContext } from "../../contexts/ItemContext";
 
 const ItemOwner = ({ children }) => {
-    const { selectItem } = useContext(ItemContext);
-    const { user, isAuthenticated } = useAuthContext();
-    const { itemId } = useParams();
+  const { selectItem } = useContext(ItemContext);
+  const { user, isAuthenticated } = useAuthContext();
+  const { itemId } = useParams();
 
-    const currentItem = selectItem(itemId);
+  const currentItem = selectItem(itemId);
 
-    if (isAuthenticated && user._id !== currentItem._ownerId) {
-        return <Navigate to='/catalog' replace />
-    }
+  if (isAuthenticated && user._id !== currentItem._ownerId) {
+    return <Navigate to="/catalog" replace />;
+  }
 
-    return children ? children : <Outlet />;
+  return children ? children : <Outlet />;
 };
 
 export default ItemOwner;
