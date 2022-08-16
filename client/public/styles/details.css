@@ -1,0 +1,119 @@
+.details {
+    font-family: 'Courier New', Courier, monospace;
+    height: 400px;
+    width: 1000px;
+    margin: 30px auto;
+    background-color: black;
+    border-radius: 7px 7px 7px 7px;
+    box-shadow: 0px 0px 1.5px 3px rgb(0, 15, 153);
+    margin-bottom: 100px;
+}
+
+.comments {
+    color: white;
+    font-family: 'Courier New', Courier, monospace;
+    text-transform: uppercase;
+    letter-spacing: 0.10em;
+    text-align: center;
+    background: #000000;
+    text-align: center;
+    height: 100%;
+    width: 50%;
+    border-radius: 7px 7px 7px 7px;
+    box-shadow: 0px 0px 1.5px 3px rgb(0, 15, 153);
+    margin-bottom: 100px;
+}
+
+.comment {
+    padding: 1%;
+}
+
+.movieCover {
+    float: left;
+    height: 100%;
+    width: auto;
+    margin-right: 20px;
+}
+
+.movieCover img {
+    border-radius: 12px 0 0 7px;
+    height: 100%;
+}
+
+.movieText {
+    padding-left: 10px;
+    padding-top: 20px;
+}
+
+.movieText h1 {
+    color: gainsboro;
+    font-weight: bolder;
+    font-size: 28px;
+}
+
+.movieText h3 {
+    margin: 8px 0 47px 18px;
+    font-size: 18px;
+    color: gray;
+    letter-spacing: 0.2em;
+    margin-bottom: 0;
+}
+
+.movieText h4 {
+    margin: 8px 0 10px 18px;
+    font-size: 16px;
+    color: #9F9991;
+    letter-spacing: 0.2em;
+}
+
+.movieText h5 {
+    margin: 8px 0 10px 14px;
+    font-size: 16px;
+    color: white;
+}
+
+.movieText>p {
+    height: auto;
+    width: 100%;
+    color: #9F9991;
+    line-height: 1.6em;
+    font-size: 18px;
+    font-weight: bold;
+    margin-right: 20px;
+}
+
+.actionBtn {
+    display: flex;
+    text-align: center;
+    left: auto;
+    top: auto;
+    right: 0;
+    bottom: 0;
+}
+
+.actionBtn>a,
+input[type="submit"] {
+    width: 200%;
+    height: 50px;
+    cursor: pointer;
+    border: none;
+    border-radius: 10px;
+    display: inline;
+    align-items: center;
+    justify-content: center;
+    background-color: #0038b1;
+    background-size: 200% 100%;
+    transition: 500ms;
+    color: white;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 20px;
+    margin-bottom: 10px;
+    margin-top: 20px;
+    padding: 10px;
+    text-decoration: none;
+    margin-right: 50px;
+}
+
+.actionBtn>a:hover {
+    background-position: right;
+}
