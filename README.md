@@ -2,7 +2,7 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-# All commands in order to install and start the development server:
+## All commands in order for starting the app:
 1. cd .\client\
 2. npm i
 3. npm start
