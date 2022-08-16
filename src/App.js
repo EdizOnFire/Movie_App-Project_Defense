@@ -10,7 +10,6 @@ import Login from './components/Login/Login';
 import Register from './components/Register/Register';
 import PrivateRoute from "./components/common/PrivateRoute";
 import CreateItem from './components/CreateItem/CreateItem';
-import Logout from './components/Logout/Logout';
 import ItemDetails from "./components/ItemDetails/ItemDetails";
 import ItemOwner from "./components/common/ItemOwner";
 import EditItem from './components/EditItem/EditItem';
@@ -34,13 +33,9 @@ function App() {
                                 <PrivateRoute>
                                     <CreateItem />
                                 </PrivateRoute>)} />
-                            <Route path="/logout" element={(
-                                <PrivateRoute>
-                                    <Logout />
-                                </PrivateRoute>)} />
                             <Route path="/catalog/:itemId" element={<ItemDetails />} />
                             <Route element={<ItemOwner />}>
-                                <Route path="/items/:itemId/edit" element={<EditItem />} />
+                                <Route path="/catalog/:itemId/edit" element={<EditItem />} />
                             </Route>
                         </Routes>
                     </main>
