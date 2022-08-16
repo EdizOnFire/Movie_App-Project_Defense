@@ -1,14 +1,15 @@
-import { useEffect, useContext } from 'react';
-import { useParams, Link, useNavigate } from 'react-router-dom';
-import { ItemContext } from '../../contexts/ItemContext';
-import { useAuthContext } from '../../contexts/AuthContext';
+import { useEffect, useContext } from "react";
+import { useParams, Link, useNavigate } from "react-router-dom";
+import { ItemContext } from "../../contexts/ItemContext";
+import { useAuthContext } from "../../contexts/AuthContext";
 
-import * as itemService from '../../services/itemService';
-import * as commentService from '../../services/commentService';
+import * as itemService from "../../services/itemService";
+import * as commentService from "../../services/commentService";
 
 const ItemDetails = () => {
     const navigate = useNavigate();
-    const { addComment, fetchItemDetails, selectItem, itemRemove } = useContext(ItemContext);
+    const { addComment, fetchItemDetails, selectItem, itemRemove } =
+        useContext(ItemContext);
     const { user } = useAuthContext();
     const { itemId } = useParams();
 
@@ -20,32 +21,43 @@ const ItemDetails = () => {
             const itemDetails = await itemService.getOne(itemId);
             const itemComments = await commentService.getByItemId(itemId);
 
-            fetchItemDetails(itemId, { ...itemDetails, comments: itemComments.map(x => `${x.user.email}: ${x.text}`) });
+            fetchItemDetails(itemId, {
+                ...itemDetails,
+                comments: itemComments.map((x) => `${x.user.email}: ${x.text}`),
+            });
         })();
-    }, [])
+    }, []);
 
     const addCommentHandler = (e) => {
         e.preventDefault();
         const formData = new FormData(e.target);
 
-        const comment = formData.get('comment');
+        const comment = formData.get("comment");
+        if (comment === "") {
+            alert("You can't submit an empty field.");
+            return;
+        }
 
-        commentService.create(itemId, comment)
-            .then(result => {
-                addComment(itemId, comment);
-            });
+        commentService.create(itemId, comment).then((result) => {
+            addComment(itemId, comment);
+        });
     };
 
     const itemDeleteHandler = () => {
-        const confirmation = window.confirm('Are you sure you want to delete this item?');
+        const confirmation = window.confirm(
+            "Are you sure you want to delete this item?"
+        );
 
         if (confirmation) {
-            itemService.remove(itemId)
-                .then(() => {
-                    itemRemove(itemId);
-                    navigate('/catalog');
-                })
+            itemService.remove(itemId).then(() => {
+                itemRemove(itemId);
+                navigate("/catalog");
+            });
         }
+    };
+
+    if (currentItem.comments === undefined) {
+        return;
     }
 
     return (
@@ -57,7 +69,6 @@ const ItemDetails = () => {
 
                 <div className="movieInfo">
                     <div className="movieText">
-
                         <h1>Name: {currentItem.name}</h1>
                         <h3>Writer: {currentItem.writer}</h3>
                         <h4>Genre: {currentItem.genre}</h4>
@@ -66,36 +77,36 @@ const ItemDetails = () => {
                     </div>
                 </div>
 
-                {isOwner &&
+                {isOwner && (
                     <div className="actionBtn">
-                        <Link to={`/items/${itemId}/edit`} className="edit">Edit</Link>
-                        <a onClick={itemDeleteHandler} className="remove">Delete</a>
+                        <Link to={`/catalog/${itemId}/edit`} className="edit">
+                            Edit
+                        </Link>
+                        <a onClick={itemDeleteHandler} className="remove">
+                            Delete
+                        </a>
                     </div>
-                }
-
-
+                )}
             </div>
 
             <div className="comments">
                 <h2>Comments:</h2>
                 <div>
-                    {currentItem.comments?.map(x =>
-                        <div key={x} className="comment">
-                            <p>{x}</p>
-                        </div>
-                    )}
-                    {!currentItem.comments &&
+                    {currentItem.comments.length !== 0 ? (
+                        currentItem.comments.map((x) => (
+                            <div key={Math.random(10000)} className="comment">
+                                <p>{x}</p>
+                            </div>
+                        ))
+                    ) : (
                         <p className="no-comment">No comments.</p>
-                    }
+                    )}
                 </div>
 
-                {user.email
-                    ? <article className="create-comment">
+                {user.email ? (
+                    <article className="create-comment">
                         <form className="form" onSubmit={addCommentHandler}>
-                            <textarea
-                                name="comment"
-                                placeholder="Comment......"
-                            />
+                            <textarea name="comment" placeholder="Comment......" />
                             <div className="actionBtn">
                                 <input
                                     className="btn-group"
@@ -105,7 +116,9 @@ const ItemDetails = () => {
                             </div>
                         </form>
                     </article>
-                    : <></>}
+                ) : (
+                    <></>
+                )}
             </div>
         </section>
     );
