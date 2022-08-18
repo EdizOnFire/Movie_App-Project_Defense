@@ -28,9 +28,7 @@ const ItemDetails = () => {
         }
     };
 
-    if (currentItem.comments === undefined) {
-        return;
-    }
+
 
     return (
         <section id="detailsPage">
@@ -60,8 +58,7 @@ const ItemDetails = () => {
                     </div>
                 )}
             </div>
-
-            <ItemComments></ItemComments>
+            <ItemComments/>
         </section>
     );
 };

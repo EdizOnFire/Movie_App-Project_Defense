@@ -18,9 +18,6 @@ const Register = ({ auth }) => {
         if (password !== confirmPassword) {
             alert("Passwords don't match.");
             return;
-        } else if (email == "" || password == "") {
-            alert("Don't leave empty fields.");
-            return;
         }
 
         authService.register(email, password).then((authData) => {

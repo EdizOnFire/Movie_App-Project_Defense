@@ -39,6 +39,10 @@ const ItemComments = () => {
         });
     };
 
+    if (currentItem.comments === undefined) {
+        return;
+    }
+
     return (
         <div className="comments">
             <h2>Comments:</h2>
@@ -55,11 +59,13 @@ const ItemComments = () => {
             {user.email && (
                 <form align="center" className="comments" onSubmit={addCommentHandler}>
                     <textarea name="comment" required="required" placeholder="Comment......" />
-                    <button className="btn btn-primary font-weight-semi-bold px-4"
-                        style={{ height: 50 }}
-                        type="submit">
-                        Add Comment
-                    </button>
+                    <div>
+                        <button className="btn btn-primary font-weight-semi-bold px-4"
+                            style={{ height: 50 }}
+                            type="submit">
+                            Add Comment
+                        </button>
+                    </div>
                 </form>
             )}
         </div>

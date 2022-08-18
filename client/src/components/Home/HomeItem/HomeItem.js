@@ -18,13 +18,12 @@ const HomeItem = ({ item }) => {
                         <Link to={`/catalog/${item._id}`} id="details" className="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2">
                             Details
                         </Link>
-                        <a className="text-white" href="">
+                        <a className="text-white">
                             <small>{item.releaseDate}</small>
                         </a>
                     </div>
                     <a
                         className="h6 m-0 text-white text-uppercase font-weight-semi-bold"
-                        href=""
                     >
                         {item.name}
                     </a>

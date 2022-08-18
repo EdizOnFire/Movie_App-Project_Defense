@@ -9,12 +9,6 @@ const CreateItem = () => {
     e.preventDefault();
 
     const itemData = Object.fromEntries(new FormData(e.target));
-    for (let item of Object.values(itemData)) {
-      if (item === '') {
-        alert("Don't leave empty fields.")
-        return;
-      }
-    }
 
     itemService.create(itemData).then((result) => {
       itemAdd(result);
@@ -28,7 +22,7 @@ const CreateItem = () => {
       </div>
       <form align="center" onSubmit={onSubmit}>
         <div className="label" htmlFor="genre" >Movie Name</div>
-        <input
+        <input required="required"
           id="name"
           name="name"
           className="name"
@@ -36,7 +30,7 @@ const CreateItem = () => {
           placeholder="Movie name"
         />
         <div className="label" htmlFor="genre" >Image Url</div>
-        <input
+        <input required="required"
           id="imgUrl"
           name="imgUrl"
           className="imgUrl"
@@ -44,7 +38,7 @@ const CreateItem = () => {
           placeholder="Image Url"
         />
         <div className="label" htmlFor="genre" >Release Date</div>
-        <input
+        <input required="required"
           id="releaseDate"
           name="releaseDate"
           className="releaseDate"
@@ -52,7 +46,7 @@ const CreateItem = () => {
           placeholder="Release date"
         />
         <div className="label" htmlFor="genre" >Writer</div>
-        <input
+        <input required="required"
           id="writer"
           name="writer"
           className="writer"
@@ -60,7 +54,7 @@ const CreateItem = () => {
           placeholder="Writer"
         />
         <div className="label" htmlFor="genre" >Genre</div>
-        <input
+        <input required="required"
           id="genre"
           name="genre"
           className="genre"
@@ -68,7 +62,7 @@ const CreateItem = () => {
           placeholder="Genre"
         />
         <div className="label" htmlFor="genre" >Description</div>
-        <textarea
+        <textarea required="required"
           name="description"
           type="text"
           className="description"

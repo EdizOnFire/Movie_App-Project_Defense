@@ -20,12 +20,6 @@ const EditItem = () => {
     e.preventDefault();
 
     const itemData = Object.fromEntries(new FormData(e.target));
-    for (let item of Object.values(itemData)) {
-      if (item === "") {
-        alert("Don't leave empty fields.");
-        return;
-      }
-    }
 
     itemService.edit(itemId, itemData).then((result) => {
       itemEdit(itemId, result);
@@ -43,6 +37,7 @@ const EditItem = () => {
           Movie Name
         </div>
         <input
+          required="required"
           id="name"
           name="name"
           className="name"
@@ -53,6 +48,7 @@ const EditItem = () => {
           Image Url
         </div>
         <input
+          required="required"
           id="imgUrl"
           name="imgUrl"
           className="imgUrl"
@@ -63,6 +59,7 @@ const EditItem = () => {
           Release date
         </div>
         <input
+          required="required"
           id="releaseDate"
           name="releaseDate"
           className="releaseDate"
@@ -73,6 +70,7 @@ const EditItem = () => {
           Writer
         </div>
         <input
+          required="required"
           id="writer"
           name="writer"
           className="writer"
@@ -84,6 +82,7 @@ const EditItem = () => {
         </div>
         <input
           id="genre"
+          required="required"
           name="genre"
           className="genre"
           type="text"
@@ -94,9 +93,11 @@ const EditItem = () => {
         </div>
         <textarea
           name="description"
+          required="required"
           className="description"
           defaultValue={currentItem.description}
         />
+         <div>
         <button
           className="btn btn-primary font-weight-semi-bold px-4"
           style={{ height: 50 }}
@@ -104,6 +105,7 @@ const EditItem = () => {
         >
           Edit Movie
         </button>
+        </div>
       </form>
     </section>
   );
