@@ -19,7 +19,6 @@ function App() {
         <AuthProvider>
             <div id="box">
                 <Header />
-
                 {/* Main Content */}
                 <ItemProvider>
                     <main id="main-content">
