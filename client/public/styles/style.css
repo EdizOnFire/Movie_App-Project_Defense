@@ -310,8 +310,12 @@ button::-moz-focus-inner,
   height: 100%;
   width: 50%;
   margin: 30px auto;
-  box-shadow: 0px 0px 1.5px 3px rgb(255, 255, 255);
   margin-bottom: 100px;
+}
+
+.h4 {
+  margin: 2%;
+  
 }
 
 .comment {
@@ -336,7 +340,7 @@ button::-moz-focus-inner,
 }
 
 .movieText h1 {
-  color: gainsboro;
+  color: rgb(255, 255, 255);
   font-weight: bolder;
   font-size: 28px;
 }
@@ -344,7 +348,7 @@ button::-moz-focus-inner,
 .movieText h3 {
   margin: 8px 0 47px 18px;
   font-size: 18px;
-  color: gray;
+  color: rgb(255, 255, 255);
   letter-spacing: 0.2em;
   margin-bottom: 0;
 }
@@ -352,7 +356,7 @@ button::-moz-focus-inner,
 .movieText h4 {
   margin: 8px 0 10px 18px;
   font-size: 16px;
-  color: #9F9991;
+  color: #ffffff;
   letter-spacing: 0.2em;
 }
 
@@ -365,7 +369,7 @@ button::-moz-focus-inner,
 .movieText>p {
   height: auto;
   width: 100%;
-  color: #9F9991;
+  color: #ffffff;
   line-height: 1.6em;
   font-size: 18px;
   font-weight: bold;
@@ -5405,6 +5409,10 @@ a.close.disabled {
   overflow-y: auto;
 }
 
+.btn-primary {
+  margin: 2%;
+}
+
 .modal {
   position: fixed;
   top: 0;
@@ -5417,11 +5425,6 @@ a.close.disabled {
   outline: 0;
 }
 
-div .label {
-  margin-top: 3%;
-  align-items: center;
-}
-
 .section-title {
   padding: 15px;
   display: flex;
@@ -5432,6 +5435,28 @@ div .label {
   border-left: 5px solid #FFCC00;
 }
 
+div .label {
+  font-size: larger;
+  margin-top: 3%;
+  align-items: center;
+}
+
+input {
+  color: white;
+  background-color: #000;
+  font-size: 20px;
+  margin: 3%;
+}
+
+textarea {
+  color: white;
+  background-color: #000;
+  padding: 2%;
+  font-size: larger;
+  margin: 3%;
+  max-width: 350px;
+}
+
 form {
   font-size: 100%;
   border: 1px solid white;
@@ -5439,20 +5464,10 @@ form {
   margin-right: 38%;
 }
 
-textarea {
-  padding: 2%;
-  font-size: larger;
-  margin: 5%;
-}
-
 button {
   margin: 5%;
 }
 
-input {
-  font-size: larger;
-  margin: 5%;
-}
 
 .modal-dialog {
   position: relative;
@@ -6300,9 +6315,6 @@ button.bg-dark:focus {
   background-color: transparent !important;
 }
 
-.border {
-  border: 1px solid #E4E7ED !important;
-}
 
 .border-top {
   border-top: 1px solid #E4E7ED !important;
@@ -7476,6 +7488,7 @@ button.bg-dark:focus {
 }
 
 .position-relative {
+  margin: 2%;
   position: relative !important;
 }
 
