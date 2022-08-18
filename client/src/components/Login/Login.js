@@ -13,65 +13,61 @@ const Login = () => {
 
         const { email, password } = Object.fromEntries(new FormData(e.target));
 
-        if (email !== '' || password !== '') {
-            authService
-                .login(email, password)
-                .then((authData) => {
-                    if (authData.code !== 403) {
-                        userLogin(authData);
-                        navigate("/");
-                    } else {
-                        alert("Email and password don't match.")
-                        return;
-                    }
-                })
-                .catch((error) => {
-                    console.error(error);
-                });
-        } else {
-            alert("Don't leave an empty field.")
-            return;
-        }
+        authService
+            .login(email, password)
+            .then((authData) => {
+                if (authData.code !== 403) {
+                    userLogin(authData);
+                    navigate("/");
+                } else {
+                    alert("Email and password don't match.");
+                    return;
+                }
+            })
+            .catch((error) => {
+                console.error(error);
+            });
     };
 
     return (
         <section id="loginPage">
-            <form onSubmit={onSubmit}>
-                <fieldset>
-                    <>
-                        <div>Login</div>
-                        <label htmlFor="email" className="vhide">
-                            Email
-                        </label>
-                        <input
-                            id="email"
-                            className="email"
-                            name="email"
-                            type="text"
-                            placeholder="Email"
-                        />
-                        <label htmlFor="password" className="vhide">
-                            Password
-                        </label>
-                        <input
-                            id="password"
-                            className="password"
-                            name="password"
-                            type="password"
-                            placeholder="Password"
-                        />
-                        <button type="submit" className="login">
-                            Login
-                        </button>
-                    </>
-
-                    <p className="field">
-                        <span>
-                            If you don't have profile click <Link to="/register">here</Link>
-                        </span>
-                    </p>
-                </fieldset>
+            <div className="section-title">
+                <h4 className="m-0 text-uppercase font-weight-bold">Login</h4>
+            </div>
+            <form align="center" onSubmit={onSubmit} className="login">
+                <div className="label">Username</div>
+                <input
+                    id="email"
+                    name="email"
+                    type="text"
+                    className="login"
+                    placeholder="Username"
+                    required="required"
+                />
+                <div className="label">Password</div>
+                <input
+                    id="password"
+                    name="password"
+                    type="password"
+                    className="login"
+                    placeholder="Password"
+                    required="required"
+                />
+                <div>
+                    <button
+                        className="btn btn-primary font-weight-semi-bold px-4"
+                        style={{ height: 50 }}
+                        type="submit"
+                    >
+                        Login
+                    </button>
+                </div>
             </form>
+            <p className="field">
+                <span>
+                    If you don't have a profile click <Link to="/register">here</Link>
+                </span>
+            </p>
         </section>
     );
 };

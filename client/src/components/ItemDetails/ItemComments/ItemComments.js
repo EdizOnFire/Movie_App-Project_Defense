@@ -30,10 +30,6 @@ const ItemComments = () => {
         const formData = new FormData(e.target);
 
         const comment = formData.get("comment");
-        if (comment === "") {
-            alert("You can't submit an empty field.");
-            return;
-        }
 
         const commentField = document.querySelector("textarea[name='comment']");
 
@@ -49,9 +45,7 @@ const ItemComments = () => {
             <div>
                 {currentItem.comments.length !== 0 ? (
                     currentItem.comments.map((x) => (
-                        <div key={Math.random(10000)} className="comment">
-                            <p>{x}</p>
-                        </div>
+                        <div key={Math.random(10000)} className="comment">{x}</div>
                     ))
                 ) : (
                     <p className="no-comment">No comments.</p>
@@ -59,14 +53,14 @@ const ItemComments = () => {
             </div>
 
             {user.email && (
-                <article className="create-comment">
-                    <form className="form" onSubmit={addCommentHandler}>
-                        <textarea name="comment" placeholder="Comment......" />
-                        <div className="actionBtn">
-                            <input className="btn-group" type="submit" value="Add Comment" />
-                        </div>
-                    </form>
-                </article>
+                <form align="center" className="comments" onSubmit={addCommentHandler}>
+                    <textarea name="comment" required="required" placeholder="Comment......" />
+                    <button className="btn btn-primary font-weight-semi-bold px-4"
+                        style={{ height: 50 }}
+                        type="submit">
+                        Add Comment
+                    </button>
+                </form>
             )}
         </div>
     );

@@ -23,77 +23,64 @@ const CreateItem = () => {
 
   return (
     <section className="createPage">
-      <form onSubmit={onSubmit}>
-        <fieldset>
-          <div>Add Movie</div>
-          <div className="create">
-            <>
-              <label htmlFor="name" className="vhide">
-                Movie name
-              </label>
-              <input
-                id="name"
-                name="name"
-                className="name"
-                type="text"
-                placeholder="Movie name"
-              />
-              <label htmlFor="imgUrl" className="vhide">
-                Image Url
-              </label>
-              <input
-                id="imgUrl"
-                name="imgUrl"
-                className="imgUrl"
-                type="text"
-                placeholder="Image Url"
-              />
-              <label htmlFor="releaseDate" className="vhide">
-                Release date
-              </label>
-              <input
-                id="releaseDate"
-                name="releaseDate"
-                className="releaseDate"
-                type="text"
-                placeholder="Release date"
-              />
-              <label htmlFor="writer" className="vhide">
-                Writer
-              </label>
-              <input
-                id="writer"
-                name="writer"
-                className="writer"
-                type="text"
-                placeholder="Writer"
-              />
-              <label htmlFor="genre" className="vhide">
-                Genre
-              </label>
-              <input
-                id="genre"
-                name="genre"
-                className="genre"
-                type="text"
-                placeholder="Genre"
-              />
-              <label htmlFor="description" className="vhide">
-                Description
-              </label>
-              <textarea
-                name="description"
-                type="text"
-                className="description"
-                placeholder="Description"
-                defaultValue={""}
-              />
-              <button className="add-movie" type="submit">
-                Add New Movie
-              </button>
-            </>
-          </div>
-        </fieldset>
+      <div className="section-title">
+        <h4 className="m-0 text-uppercase font-weight-bold">Add Movie</h4>
+      </div>
+      <form align="center" onSubmit={onSubmit}>
+        <div className="label" htmlFor="genre" >Movie Name</div>
+        <input
+          id="name"
+          name="name"
+          className="name"
+          type="text"
+          placeholder="Movie name"
+        />
+        <div className="label" htmlFor="genre" >Image Url</div>
+        <input
+          id="imgUrl"
+          name="imgUrl"
+          className="imgUrl"
+          type="text"
+          placeholder="Image Url"
+        />
+        <div className="label" htmlFor="genre" >Release Date</div>
+        <input
+          id="releaseDate"
+          name="releaseDate"
+          className="releaseDate"
+          type="text"
+          placeholder="Release date"
+        />
+        <div className="label" htmlFor="genre" >Writer</div>
+        <input
+          id="writer"
+          name="writer"
+          className="writer"
+          type="text"
+          placeholder="Writer"
+        />
+        <div className="label" htmlFor="genre" >Genre</div>
+        <input
+          id="genre"
+          name="genre"
+          className="genre"
+          type="text"
+          placeholder="Genre"
+        />
+        <div className="label" htmlFor="genre" >Description</div>
+        <textarea
+          name="description"
+          type="text"
+          className="description"
+          placeholder="Description"
+        />
+        <div>
+          <button className="btn btn-primary font-weight-semi-bold px-4"
+            style={{ height: 50 }}
+            type="submit">
+            Add New Movie
+          </button>
+        </div>
       </form>
     </section>
   );

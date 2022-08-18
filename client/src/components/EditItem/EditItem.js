@@ -35,81 +35,75 @@ const EditItem = () => {
 
   return (
     <section id="editPage">
-      <form onSubmit={onSubmit}>
-        <fieldset>
-          <div>Edit Movie</div>
-          <div className="container">
-            <label htmlFor="name" className="vhide">
-              Movie Name
-            </label>
-            <input
-              id="name"
-              name="name"
-              className="name"
-              type="text"
-              defaultValue={currentItem.name}
-            />
-
-            <label htmlFor="imgUrl" className="vhide">
-              Image Url
-            </label>
-            <input
-              id="imgUrl"
-              name="imgUrl"
-              className="imgUrl"
-              type="text"
-              defaultValue={currentItem.imgUrl}
-            />
-
-            <label htmlFor="releaseDate" className="vhide">
-              Release date
-            </label>
-            <input
-              id="releaseDate"
-              name="releaseDate"
-              className="releaseDate"
-              type="text"
-              defaultValue={currentItem.releaseDate}
-            />
-
-            <label htmlFor="writer" className="vhide">
-              Writer
-            </label>
-            <input
-              id="writer"
-              name="writer"
-              className="writer"
-              type="text"
-              defaultValue={currentItem.writer}
-            />
-
-            <label htmlFor="genre" className="vhide">
-              Genre
-            </label>
-            <input
-              id="genre"
-              name="genre"
-              className="genre"
-              type="text"
-              defaultValue={currentItem.genre}
-            />
-
-            <label htmlFor="description" className="vhide">
-              Description
-            </label>
-            <textarea
-              name="description"
-              className="description"
-              rows={10}
-              cols={10}
-              defaultValue={currentItem.description}
-            />
-
-            <button className="edit-movie" type="submit">
-              Edit Movie
-            </button>
-          </div>
-        </fieldset>
+      <div className="section-title">
+        <h4 className="m-0 text-uppercase font-weight-bold">Edit Movie</h4>
+      </div>
+      <form align="center" onSubmit={onSubmit}>
+        <div className="label" htmlFor="name">
+          Movie Name
+        </div>
+        <input
+          id="name"
+          name="name"
+          className="name"
+          type="text"
+          defaultValue={currentItem.name}
+        />
+        <div className="label" htmlFor="imgUrl">
+          Image Url
+        </div>
+        <input
+          id="imgUrl"
+          name="imgUrl"
+          className="imgUrl"
+          type="text"
+          defaultValue={currentItem.imgUrl}
+        />
+        <div className="label" htmlFor="releaseDate">
+          Release date
+        </div>
+        <input
+          id="releaseDate"
+          name="releaseDate"
+          className="releaseDate"
+          type="text"
+          defaultValue={currentItem.releaseDate}
+        />
+        <div className="label" htmlFor="writer">
+          Writer
+        </div>
+        <input
+          id="writer"
+          name="writer"
+          className="writer"
+          type="text"
+          defaultValue={currentItem.writer}
+        />
+        <div className="label" htmlFor="genre">
+          Genre
+        </div>
+        <input
+          id="genre"
+          name="genre"
+          className="genre"
+          type="text"
+          defaultValue={currentItem.genre}
+        />
+        <div className="label" htmlFor="description">
+          Description
+        </div>
+        <textarea
+          name="description"
+          className="description"
+          defaultValue={currentItem.description}
+        />
+        <button
+          className="btn btn-primary font-weight-semi-bold px-4"
+          style={{ height: 50 }}
+          type="submit"
+        >
+          Edit Movie
+        </button>
       </form>
     </section>
   );

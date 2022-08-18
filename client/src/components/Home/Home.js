@@ -1,18 +1,29 @@
-import { Link } from "react-router-dom";
+import { useContext } from "react";
+
+import { ItemContext } from "../../contexts/ItemContext";
+import HomeItem from "./HomeItem/HomeItem";
 
 const Home = () => {
+    const { items } = useContext(ItemContext);
 
     return (
-
         <section id="welcomePage">
-            <div className="welcome-message">
-                <h1>Welcome to Your Movie Website!</h1>
-                <p>Feel free to browse our <Link to="/catalog">catalog</Link> of movies and to upload your own.</p>
-                <p>If you have an account, click on "Login" on the nav bar.</p>
-                <p>If you don't have an account, click on "Register" on the nav bar.</p>
+            <div className="section-title">
+                <h4 className="m-0 text-uppercase font-weight-bold">Featured Movies</h4>
+            </div>
+            <div className="container-fluid">
+                <div className="col-lg-5 px-0">
+                    <div className="row mx-0">
+                        {items.length > 0 ? (
+                            items.map((x) => <HomeItem key={x._id} item={x} />)
+                        ) : (
+                            <p>No Movies in Catalog!</p>
+                        )}
+                    </div>
+                </div>
             </div>
         </section>
     );
-}
+};
 
 export default Home;

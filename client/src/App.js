@@ -13,7 +13,6 @@ import CreateItem from './components/CreateItem/CreateItem';
 import ItemDetails from "./components/ItemDetails/ItemDetails";
 import ItemOwner from "./components/common/ItemOwner";
 import EditItem from './components/EditItem/EditItem';
-import Footer from './components/Footer/Footer';
 
 function App() {
     return (
@@ -40,8 +39,6 @@ function App() {
                         </Routes>
                     </main>
                 </ItemProvider>
-
-                <Footer />
             </div>
         </AuthProvider>
     );

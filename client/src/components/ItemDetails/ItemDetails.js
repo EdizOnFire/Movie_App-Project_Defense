@@ -51,10 +51,10 @@ const ItemDetails = () => {
 
                 {isOwner && (
                     <div className="actionBtn">
-                        <Link to={`/catalog/${itemId}/edit`} className="edit">
+                        <Link to={`/catalog/${itemId}/edit`} className="btn btn-primary font-weight-semi-bold px-4">
                             Edit
                         </Link>
-                        <a onClick={itemDeleteHandler} className="remove">
+                        <a onClick={itemDeleteHandler} className="btn btn-primary font-weight-semi-bold px-4">
                             Delete
                         </a>
                     </div>
