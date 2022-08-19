@@ -1,5 +1,6 @@
 import { createContext, useReducer, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { ADD_COMMENT, ADD_ITEM, ADD_ITEMS, EDIT_ITEM, FETCH_ITEM_DETAILS, REMOVE_ITEM } from "../constants";
 
 import * as itemService from "../services/itemService";
 
@@ -7,20 +8,22 @@ export const ItemContext = createContext();
 
 const itemReducer = (state, action) => {
   switch (action.type) {
-    case "ADD_ITEMS":
+    case ADD_ITEMS:
       return action.payload.map((x) => ({ ...x, comments: [] }));
-    case "ADD_ITEM":
+    case ADD_ITEM:
       return [...state, action.payload];
-    case "FETCH_ITEM_DETAILS":
-    case "EDIT_ITEM":
+    case FETCH_ITEM_DETAILS:
+    case EDIT_ITEM:
       return state.map((x) => (x._id === action.itemId ? action.payload : x));
-    case "ADD_COMMENT":
-      return state.map((x) =>
-        x._id === action.itemId
-          ? { ...x, comments: [...x.comments, action.payload] }
-          : x
+    case ADD_COMMENT:
+      return state.map(
+        (x) =>
+          x._id === action.itemId && {
+            ...x,
+            comments: [...x.comments, action.payload]
+          }
       );
-    case "REMOVE_ITEM":
+    case REMOVE_ITEM:
       return state.filter((x) => x._id !== action.itemId);
     default:
       return state;
@@ -29,7 +32,7 @@ const itemReducer = (state, action) => {
 
 export const ItemProvider = ({ children }) => {
   const navigate = useNavigate();
-  const [items, dispatch] = useReducer(itemReducer, []);
+  const [items, send] = useReducer(itemReducer, []);
 
   useEffect(() => {
     itemService.getAll().then((result) => {
@@ -38,7 +41,7 @@ export const ItemProvider = ({ children }) => {
         payload: result,
       };
 
-      dispatch(action);
+      send(action);
     });
   }, []);
 
@@ -47,14 +50,15 @@ export const ItemProvider = ({ children }) => {
   };
 
   const fetchItemDetails = (itemId, itemDetails) => {
-    dispatch({
+    send({
       type: "FETCH_ITEM_DETAILS",
       payload: itemDetails,
       itemId,
     });
   };
+
   const addComment = (itemId, comment) => {
-    dispatch({
+    send({
       type: "ADD_COMMENT",
       payload: comment,
       itemId,
@@ -62,7 +66,7 @@ export const ItemProvider = ({ children }) => {
   };
 
   const itemAdd = (itemData) => {
-    dispatch({
+    send({
       type: "ADD_ITEM",
       payload: itemData,
     });
@@ -71,7 +75,7 @@ export const ItemProvider = ({ children }) => {
   };
 
   const itemEdit = (itemId, itemData) => {
-    dispatch({
+    send({
       type: "EDIT_ITEM",
       payload: itemData,
       itemId,
@@ -79,11 +83,12 @@ export const ItemProvider = ({ children }) => {
   };
 
   const itemRemove = (itemId) => {
-    dispatch({
+    send({
       type: "REMOVE_ITEM",
       itemId,
     });
   };
+
   return (
     <ItemContext.Provider
       value={{
