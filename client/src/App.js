@@ -8,7 +8,7 @@ import Home from "./components/Home/Home";
 import Catalog from "./components/Catalog/Catalog";
 import Login from "./components/Login/Login";
 import Register from "./components/Register/Register";
-import PrivateRoute from "./components/common/PrivateRoute";
+import { PrivateRoute, NonPrivateRoute } from "./components/common/RouteGuards";
 import CreateItem from "./components/CreateItem/CreateItem";
 import ItemDetails from "./components/ItemDetails/ItemDetails";
 import ItemOwner from "./components/common/ItemOwner";
@@ -24,16 +24,13 @@ function App() {
                         <Routes>
                             <Route path="/" element={<Home />} />
                             <Route path="/catalog" element={<Catalog />} />
-                            <Route path="/login" element={<Login />} />
-                            <Route path="/register" element={<Register />} />
-                            <Route
-                                path="/create"
-                                element={
-                                    <PrivateRoute>
-                                        <CreateItem />
-                                    </PrivateRoute>
-                                }
-                            />
+                            <Route element={<NonPrivateRoute />} >
+                                <Route path="/login" element={<Login />} />
+                                <Route path="/register" element={<Register />} />
+                            </Route>
+                            <Route element={<PrivateRoute />} >
+                                <Route path="/create" element={<CreateItem />} />
+                            </Route>
                             <Route path="/catalog/:itemId" element={<ItemDetails />} />
                             <Route element={<ItemOwner />}>
                                 <Route path="/catalog/:itemId/edit" element={<EditItem />} />
