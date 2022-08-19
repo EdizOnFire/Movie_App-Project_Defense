@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
 import { ItemContext } from "../../contexts/ItemContext";
-import { useAuthContext } from "../../contexts/AuthContext";
+import { AuthContext } from "../../contexts/AuthContext";
 
 import * as itemService from "../../services/itemService";
 import ItemComments from "./ItemComments/ItemComments";
@@ -9,7 +9,7 @@ import ItemComments from "./ItemComments/ItemComments";
 const ItemDetails = () => {
     const navigate = useNavigate();
     const { selectItem, itemRemove } = useContext(ItemContext);
-    const { user } = useAuthContext();
+    const { user } = useContext(AuthContext);
     const { itemId } = useParams();
 
     const currentItem = selectItem(itemId);
@@ -28,15 +28,12 @@ const ItemDetails = () => {
         }
     };
 
-
-
     return (
         <section id="detailsPage">
             <div className="details">
                 <div className="movieCover">
                     <img src={currentItem.imgUrl} />
                 </div>
-
                 <div className="movieInfo">
                     <div className="movieText">
                         <h1>Name: {currentItem.name}</h1>
@@ -46,19 +43,24 @@ const ItemDetails = () => {
                         <p>Description: {currentItem.description}</p>
                     </div>
                 </div>
-
                 {isOwner && (
                     <div className="actionBtn">
-                        <Link to={`/catalog/${itemId}/edit`} className="btn btn-primary font-weight-semi-bold px-4">
+                        <Link
+                            to={`/catalog/${itemId}/edit`}
+                            className="btn btn-primary font-weight-semi-bold px-4"
+                        >
                             Edit
                         </Link>
-                        <a onClick={itemDeleteHandler} className="btn btn-primary font-weight-semi-bold px-4">
+                        <a
+                            onClick={itemDeleteHandler}
+                            className="btn btn-primary font-weight-semi-bold px-4"
+                        >
                             Delete
                         </a>
                     </div>
                 )}
             </div>
-            <ItemComments/>
+            <ItemComments />
         </section>
     );
 };
