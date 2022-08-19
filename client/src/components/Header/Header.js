@@ -26,13 +26,33 @@ const Header = () => {
         <header>
             <nav className="navbar navbar-expand-lg bg-dark navbar-dark py-2 py-lg-0 px-lg-5">
                 <div className="navbar-nav mr-auto py-0">
-                    <Link to="/" className="nav-item nav-link active">Home</Link>
-                    <Link to="/catalog" className="nav-item nav-link">Catalog</Link>
+                    <Link to="/" className="nav-item nav-link active">
+                        Home
+                    </Link>
+                    <Link to="/catalog" className="nav-item nav-link">
+                        Catalog
+                    </Link>
 
-                    {user.email && <Link to="/create" className="nav-item nav-link">Create Movie</Link>}
-                    {user.email && <Link to="" className="nav-item nav-link" onClick={onLogout}>Logout</Link>}
-                    {!user.email && <Link to="/login" className="nav-item nav-link">Login</Link>}
-                    {!user.email && <Link to="/register" className="nav-item nav-link">Register</Link>}
+                    {user.email && (
+                        <Link to="/create" className="nav-item nav-link">
+                            Create Movie
+                        </Link>
+                    )}
+                    {user.email && (
+                        <Link to="" className="nav-item nav-link" onClick={onLogout}>
+                            Logout
+                        </Link>
+                    )}
+                    {!user.email && (
+                        <Link to="/login" className="nav-item nav-link">
+                            Login
+                        </Link>
+                    )}
+                    {!user.email && (
+                        <Link to="/register" className="nav-item nav-link">
+                            Register
+                        </Link>
+                    )}
                 </div>
             </nav>
         </header>
