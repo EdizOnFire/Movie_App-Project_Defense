@@ -1,14 +1,14 @@
 import { useEffect, useContext } from "react";
 import { useParams } from "react-router-dom";
 import { ItemContext } from "../../../contexts/ItemContext";
-import { useAuthContext } from "../../../contexts/AuthContext";
+import { AuthContext } from "../../../contexts/AuthContext";
 
 import * as itemService from "../../../services/itemService";
 import * as commentService from "../../../services/commentService";
 
 const ItemComments = () => {
     const { addComment, fetchItemDetails, selectItem } = useContext(ItemContext);
-    const { user } = useAuthContext();
+    const { user } = useContext(AuthContext);
     const { itemId } = useParams();
 
     const currentItem = selectItem(itemId);
@@ -27,12 +27,10 @@ const ItemComments = () => {
 
     const addCommentHandler = (e) => {
         e.preventDefault();
+
         const formData = new FormData(e.target);
-
         const comment = formData.get("comment");
-
         const commentField = document.querySelector("textarea[name='comment']");
-
         commentService.create(itemId, comment).then((result) => {
             addComment(itemId, comment);
             commentField.value = "";
@@ -49,7 +47,9 @@ const ItemComments = () => {
             <div>
                 {currentItem.comments.length !== 0 ? (
                     currentItem.comments.map((x) => (
-                        <div key={Math.random(10000)} className="comment">{x}</div>
+                        <div key={Math.random(10000)} className="comment">
+                            {x}
+                        </div>
                     ))
                 ) : (
                     <p className="no-comment">No comments.</p>
@@ -58,11 +58,17 @@ const ItemComments = () => {
 
             {user.email && (
                 <form align="center" className="comments" onSubmit={addCommentHandler}>
-                    <textarea name="comment" required="required" placeholder="Comment......" />
+                    <textarea
+                        name="comment"
+                        required="required"
+                        placeholder="Comment......"
+                    />
                     <div>
-                        <button className="btn btn-primary font-weight-semi-bold px-4"
+                        <button
+                            className="btn btn-primary font-weight-semi-bold px-4"
                             style={{ height: 50 }}
-                            type="submit">
+                            type="submit"
+                        >
                             Add Comment
                         </button>
                     </div>
