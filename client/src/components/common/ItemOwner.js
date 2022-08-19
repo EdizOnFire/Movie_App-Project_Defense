@@ -1,12 +1,12 @@
 import { useContext } from "react";
 import { Outlet, useParams, Navigate } from "react-router-dom";
 
-import { useAuthContext } from "../../contexts/AuthContext";
+import { AuthContext } from "../../contexts/AuthContext";
 import { ItemContext } from "../../contexts/ItemContext";
 
 const ItemOwner = ({ children }) => {
   const { selectItem } = useContext(ItemContext);
-  const { user, isAuthenticated } = useAuthContext();
+  const { user, isAuthenticated } = useContext(AuthContext);
   const { itemId } = useParams();
 
   const currentItem = selectItem(itemId);
