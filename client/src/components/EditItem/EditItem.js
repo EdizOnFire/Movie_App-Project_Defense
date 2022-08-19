@@ -97,14 +97,14 @@ const EditItem = () => {
           className="description"
           defaultValue={currentItem.description}
         />
-         <div>
-        <button
-          className="btn btn-primary font-weight-semi-bold px-4"
-          style={{ height: 50 }}
-          type="submit"
-        >
-          Edit Movie
-        </button>
+        <div>
+          <button
+            className="btn btn-primary font-weight-semi-bold px-4"
+            style={{ height: 50 }}
+            type="submit"
+          >
+            Edit Movie
+          </button>
         </div>
       </form>
     </section>
