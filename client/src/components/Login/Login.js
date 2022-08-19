@@ -35,13 +35,13 @@ const Login = () => {
                 <h4 className="m-0 text-uppercase font-weight-bold">Login</h4>
             </div>
             <form align="center" onSubmit={onSubmit} className="login">
-                <div className="label">Username</div>
+                <div className="label">Email</div>
                 <input
                     id="email"
                     name="email"
                     type="text"
                     className="login"
-                    placeholder="Username"
+                    placeholder="Email"
                     required="required"
                 />
                 <div className="label">Password</div>
