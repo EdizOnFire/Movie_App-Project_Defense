@@ -1,9 +1,11 @@
+import { useContext } from "react";
 import { useNavigate, Link } from "react-router-dom";
+import { AuthContext } from "../../contexts/AuthContext";
 
 import * as authService from "../../services/authService";
-import { withAuth } from "../../contexts/AuthContext";
 
-const Register = ({ auth }) => {
+const Register = () => {
+    const { userLogin } = useContext(AuthContext)
     const navigate = useNavigate();
 
     const onSubmit = (e) => {
@@ -21,7 +23,7 @@ const Register = ({ auth }) => {
         }
 
         authService.register(email, password).then((authData) => {
-            auth.userLogin(authData);
+            userLogin(authData);
             navigate("/");
         });
     };
@@ -65,7 +67,6 @@ const Register = ({ auth }) => {
                         Register
                     </button>
                 </div>
-
             </form>
             <p className="field">
                 <span>
@@ -76,6 +77,4 @@ const Register = ({ auth }) => {
     );
 };
 
-const RegisterWithAuth = withAuth(Register);
-
-export default RegisterWithAuth;
+export default Register;
