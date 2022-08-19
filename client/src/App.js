@@ -13,6 +13,7 @@ import CreateItem from "./components/CreateItem/CreateItem";
 import ItemDetails from "./components/ItemDetails/ItemDetails";
 import ItemOwner from "./components/common/ItemOwner";
 import EditItem from "./components/EditItem/EditItem";
+import NotFound from "./components/NotFound/NotFound";
 
 function App() {
     return (
@@ -35,6 +36,7 @@ function App() {
                             <Route element={<ItemOwner />}>
                                 <Route path="/catalog/:itemId/edit" element={<EditItem />} />
                             </Route>
+                            <Route path="*" element={<NotFound />} />
                         </Routes>
                     </main>
                 </ItemProvider>
