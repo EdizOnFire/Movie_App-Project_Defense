@@ -2,9 +2,8 @@ import { useContext } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
 import { ItemContext } from "../../contexts/ItemContext";
 import { AuthContext } from "../../contexts/AuthContext";
-
-import * as itemService from "../../services/itemService";
 import ItemComments from "./ItemComments/ItemComments";
+import * as itemService from "../../services/itemService";
 
 const ItemDetails = () => {
     const navigate = useNavigate();
@@ -32,15 +31,15 @@ const ItemDetails = () => {
         <section id="detailsPage">
             <div className="details">
                 <div className="movieCover">
-                    <img src={currentItem.imgUrl} />
+                    <img src={currentItem.imgUrl} alt="Apologies for the error." />
                 </div>
                 <div className="movieInfo">
                     <div className="movieText">
                         <h1>Name: {currentItem.name}</h1>
-                        <h3>Writer: {currentItem.writer}</h3>
+                        <h4>Writer: {currentItem.writer}</h4>
                         <h4>Genre: {currentItem.genre}</h4>
                         <h4>Date: {currentItem.releaseDate}</h4>
-                        <p>Description: {currentItem.description}</p>
+                        <h4>Description: {currentItem.description}</h4>
                     </div>
                 </div>
                 {isOwner && (
@@ -51,12 +50,12 @@ const ItemDetails = () => {
                         >
                             Edit
                         </Link>
-                        <a
+                        <button
                             onClick={itemDeleteHandler}
                             className="btn btn-primary font-weight-semi-bold px-4"
                         >
                             Delete
-                        </a>
+                        </button>
                     </div>
                 )}
             </div>

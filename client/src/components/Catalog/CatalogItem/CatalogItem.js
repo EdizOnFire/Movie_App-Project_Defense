@@ -7,6 +7,7 @@ const CatalogItem = ({ item }) => {
                 <img
                     className="img-fluid w-100"
                     src={item.imgUrl}
+                    alt='Apologies for the error.'
                     style={{ objectFit: "cover" }}
                 />
                 <div className="bg-white border border-top-0 p-4">
@@ -17,13 +18,11 @@ const CatalogItem = ({ item }) => {
                             className="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2">
                             Details
                         </Link>
-                        <a className="text-body">
-                            <small>{item.releaseDate}</small>
-                        </a>
+                        <small>{item.releaseDate}</small>
                     </div>
-                    <a className="h4 d-block mb-3 text-secondary text-uppercase font-weight-bold">
+                    <div className="h4 d-block mb-3 text-secondary text-uppercase font-weight-bold">
                         {item.name}
-                    </a>
+                    </div>
                 </div>
             </div>
         </div>
