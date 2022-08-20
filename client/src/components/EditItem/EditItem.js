@@ -1,8 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-
-import * as itemService from "../../services/itemService";
 import { ItemContext } from "../../contexts/ItemContext";
+import * as itemService from "../../services/itemService";
 
 const EditItem = () => {
   const [currentItem, setCurrentItem] = useState({});
@@ -10,7 +9,7 @@ const EditItem = () => {
   const { itemId } = useParams();
   const navigate = useNavigate();
 
-  useEffect(() => {
+  useEffect((itemId) => {
     itemService.getOne(itemId).then((itemData) => {
       setCurrentItem(itemData);
     });

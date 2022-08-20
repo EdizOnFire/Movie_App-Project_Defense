@@ -1,6 +1,6 @@
 import { createContext, useReducer, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { ADD_COMMENT, ADD_ITEM, ADD_ITEMS, EDIT_ITEM, FETCH_ITEM_DETAILS, REMOVE_ITEM } from "../constants";
+import { ADD_COMMENT, ADD_ITEM, ADD_ITEMS, EDIT_ITEM, FETCH_ITEM_DETAILS, DELETE_ITEM } from "../constants";
 
 import * as itemService from "../services/itemService";
 
@@ -23,7 +23,7 @@ const itemReducer = (state, action) => {
             comments: [...x.comments, action.payload]
           }
       );
-    case REMOVE_ITEM:
+    case DELETE_ITEM:
       return state.filter((x) => x._id !== action.itemId);
     default:
       return state;
@@ -84,7 +84,7 @@ export const ItemProvider = ({ children }) => {
 
   const itemRemove = (itemId) => {
     send({
-      type: "REMOVE_ITEM",
+      type: "DELETE_ITEM",
       itemId,
     });
   };

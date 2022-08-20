@@ -8,4 +8,4 @@ export const EDIT_ITEM = "EDIT_ITEM";
 
 export const ADD_COMMENT = "ADD_COMMENT";
 
-export const REMOVE_ITEM = "REMOVE_ITEM";
+export const DELETE_ITEM = "DELETE_ITEM";

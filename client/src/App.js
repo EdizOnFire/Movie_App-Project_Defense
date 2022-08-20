@@ -8,10 +8,9 @@ import Home from "./components/Home/Home";
 import Catalog from "./components/Catalog/Catalog";
 import Login from "./components/Login/Login";
 import Register from "./components/Register/Register";
-import { PrivateRoute, NonPrivateRoute } from "./components/common/RouteGuards";
+import { PrivateRoute, NonPrivateRoute, ItemOwner } from "./components/common/RouteGuards";
 import CreateItem from "./components/CreateItem/CreateItem";
 import ItemDetails from "./components/ItemDetails/ItemDetails";
-import ItemOwner from "./components/common/ItemOwner";
 import EditItem from "./components/EditItem/EditItem";
 import NotFound from "./components/NotFound/NotFound";
 
