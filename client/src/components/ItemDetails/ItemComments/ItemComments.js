@@ -1,8 +1,7 @@
-import { useEffect, useContext } from "react";
+import { useEffect, useContext, useState } from "react";
 import { useParams } from "react-router-dom";
 import { ItemContext } from "../../../contexts/ItemContext";
 import { AuthContext } from "../../../contexts/AuthContext";
-
 import * as itemService from "../../../services/itemService";
 import * as commentService from "../../../services/commentService";
 
@@ -10,6 +9,7 @@ const ItemComments = () => {
     const { addComment, fetchItemDetails, selectItem } = useContext(ItemContext);
     const { user } = useContext(AuthContext);
     const { itemId } = useParams();
+    const [comment, setComment] = useState("");
 
     const currentItem = selectItem(itemId);
 
@@ -23,17 +23,14 @@ const ItemComments = () => {
                 comments: itemComments.map((x) => `${x.user.email}: ${x.text}`),
             });
         })();
-    }, []);
+    });
 
     const addCommentHandler = (e) => {
         e.preventDefault();
 
-        const formData = new FormData(e.target);
-        const comment = formData.get("comment");
-        const commentField = document.querySelector("textarea[name='comment']");
-        commentService.create(itemId, comment).then((result) => {
+        commentService.create(itemId, comment).then(() => {
             addComment(itemId, comment);
-            commentField.value = "";
+            setComment("");
         });
     };
 
@@ -62,6 +59,8 @@ const ItemComments = () => {
                         name="comment"
                         required="required"
                         placeholder="Comment......"
+                        value={comment}
+                        onChange={(e) => setComment(e.target.value)}
                     />
                     <div>
                         <button
