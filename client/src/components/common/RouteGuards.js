@@ -1,16 +1,26 @@
 import { useContext } from "react";
-import { Navigate, Outlet } from "react-router-dom";
-
+import { Navigate, Outlet, useParams } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthContext";
+import { ItemContext } from "../../contexts/ItemContext";
 
-export const PrivateRoute = ({ }) => {
+export const PrivateRoute = () => {
   const { isAuthenticated } = useContext(AuthContext);
 
   return isAuthenticated ? <Outlet /> : <Navigate to="/login" />;
 };
 
-export const NonPrivateRoute = ({ }) => {
+export const NonPrivateRoute = () => {
   const { isAuthenticated } = useContext(AuthContext);
 
   return !isAuthenticated ? <Outlet /> : <Navigate to="/" />;
+};
+
+export const ItemOwner = () => {
+  const { selectItem } = useContext(ItemContext);
+  const { user, isAuthenticated } = useContext(AuthContext);
+  const { itemId } = useParams();
+
+  const currentItem = selectItem(itemId);
+
+  return (isAuthenticated && user._id !== currentItem._ownerId) ? <Outlet /> : <Navigate to="/catalog" replace />;
 };
